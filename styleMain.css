@@ -4,3 +4,23 @@
     text-align:center;
     padding:25px;
 }
+#left{
+    background-color: white;
+    color: black;
+    float: left;
+    width: 500px;
+}
+#right{
+    background-color: darkgray;
+    color: black;
+    float: right;
+    width: 500px;
+    height: 400px;
+}
+#footer{
+    background-color: black;
+    color: white;
+    clear: both;
+    text-align: center;
+    padding-bottom: 5px;
+}
