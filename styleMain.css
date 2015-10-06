@@ -8,14 +8,15 @@
     background-color: white;
     color: black;
     float: left;
-    width: 500px;
+    width: auto;
 }
 #right{
     background-color: darkgray;
+    text-align: center;
     color: black;
     float: right;
-    width: 500px;
-    height: 400px;
+    width: 900px;
+    height: 600px;
 }
 #footer{
     background-color: black;
