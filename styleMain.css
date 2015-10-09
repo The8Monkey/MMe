@@ -1,16 +1,16 @@
-#header{
+header{
     background-color:black;
     color:white;
     text-align:center;
     padding:25px;
 }
-#left{
+left{
     background-color: white;
     color: black;
     float: left;
     width: auto;
 }
-#right{
+right{
     background-color: darkgray;
     text-align: center;
     color: black;
@@ -18,7 +18,7 @@
     width: 900px;
     height: 600px;
 }
-#footer{
+footer{
     background-color: black;
     color: white;
     clear: both;
