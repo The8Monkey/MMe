@@ -1,0 +1,29 @@
+table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+article{
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+iframe{
+    width: 100%;
+}
+table ,td{
+    border: 2px solid black;
+}
+footer{
+    background-color: black;
+    color: white;
+    clear: both;
+    text-align: center;
+    padding-bottom: 5px;
+}
+header{
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:25px;
+}

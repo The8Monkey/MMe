@@ -8,7 +8,6 @@ nav{
     background-color: white;
     color: black;
     float: left;
-    width: auto;
 }
 section{
     background-color: darkgray;
@@ -24,4 +23,10 @@ footer{
     clear: both;
     text-align: center;
     padding-bottom: 5px;
+}
+table ,td{
+    border: 2px solid black;
+}
+table {
+    width: 100%;
 }
