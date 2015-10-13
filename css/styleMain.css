@@ -4,13 +4,13 @@ header{
     text-align:center;
     padding:25px;
 }
-left{
+nav{
     background-color: white;
     color: black;
     float: left;
     width: auto;
 }
-right{
+section{
     background-color: darkgray;
     text-align: center;
     color: black;
