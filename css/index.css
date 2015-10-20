@@ -49,3 +49,7 @@ img{
     padding: 5px;
     height: 40%;
 }
+a {
+    color: black;
+    text-decoration: none;
+}
