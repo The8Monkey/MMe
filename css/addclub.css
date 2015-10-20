@@ -1,8 +1,9 @@
 html{
-    background-color: chartreuse;
+    background-color: #ecf0f1;
+    font-family: Helvetica, sans-serif !important;
 }
 header{
-    background-color:black;
+    background-color:#e74c3c;
     color:white;
     text-align:center;
     padding:25px;
