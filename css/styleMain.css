@@ -1,3 +1,6 @@
+html{
+    background-color: aquamarine;
+}
 header{
     background-color:black;
     color:white;
@@ -5,6 +8,7 @@ header{
     padding:25px;
 }
 nav{
+    position: fixed;
     background-color: white;
     color: black;
     float: left;

@@ -27,3 +27,6 @@ header{
     text-align:center;
     padding:25px;
 }
+.button-secondary {
+    background: rgb(66, 184, 221); /* this is a light blue */
+}
