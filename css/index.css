@@ -7,12 +7,15 @@ table {
     margin-right: auto;
 }
 article{
-    background-color: white;
+    background-color: chartreuse;
     color: black;
     text-align: center;
 }
 iframe{
     width: 100%;
+}
+table{
+    background-color: blue;
 }
 table ,td{
     border: 2px solid black;
