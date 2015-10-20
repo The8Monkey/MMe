@@ -10,26 +10,34 @@
         <h1><b>Sportfinder</b></h1>
     </header>
     <nav>
-
-        <p>new<br>
-            delete<br>
-            update<br>
-            find<br>
-            show all
-        </p>
+        <button class="pure-button button-secondary bigger-button">New</button>
+        <br />
+        <button class="pure-button button-secondary bigger-button">Find</button>
+        <br />
+        <button class="pure-button button-secondary bigger-button">Show All</button>
     </nav>
     <section>
-        <table>
-            <tr>
-                <td>Judoclub Berlin</td>
-                <td>12345 Chalottenburg</td>
-                <td><img src="../pics/JcB.png"> </td>
-            <tr>
-                <td>Karate Wedding</td>
-                <td>13456 Wedding</td>
-                <td><img src="../pics/KW.png"> </td>
-            </tr>
-        </table>
+        <form method="post">
+            <fieldset><legend>Register Your Club</legend>
+                <label for="url">Image URL:</label>
+                <input type="url" id="url" name="url" size="25" maxlength="30">
+                <br><br>
+                <label for="clubname">Sport club name:</label>
+                <input type="text" id="clubname" name="clubname" size="25" maxlength="30" required>
+                <br><br>
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" size="25" maxlength="30" required>
+                <br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" size="25" maxlength="30" required>
+                <br><br>
+                <label for="url">Phonenumber:</label>
+                <input type="tel" id="phonenumber" name="phonenumber" size="25" maxlength="30">
+                <br><br>
+                <input type="submit" value="send">
+            </fieldset>
+        </form>
+
     </section>
     <footer>
         <p>Copyright Christoph Stumpe, Sebastian Nieling</p>
