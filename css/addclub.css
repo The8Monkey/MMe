@@ -3,10 +3,10 @@ html{
     font-family: Helvetica, sans-serif !important;
 }
 header{
-    background-color:#e74c3c;
+    background-color: #3498db;
     color:white;
     text-align:center;
-    padding:25px;
+    padding:5px;
 }
 nav{
     position: fixed;
@@ -46,8 +46,9 @@ table ,td{
     font-size: 18pt;
 }
 footer{
-    background-color: black;
+    background-color: #2980b9;
     color: white;
+    clear: both;
     text-align: center;
     padding: 5px;
 }
