@@ -1,6 +1,9 @@
+body{margin: 0px}
 html{
     background-color: #bdc3c7;
     font-family: Helvetica, sans-serif !important;
+    position: relative;
+    min-height: 100%;
 }
 table {
     border-collapse: collapse;
@@ -20,7 +23,7 @@ table ,td{
 article{
     color: black;
     text-align: center;
-    padding-bottom: 5px;
+    padding-bottom: 15px;
 }
 iframe{
     width: 100%;
@@ -30,13 +33,16 @@ footer{
     color: white;
     clear: both;
     text-align: center;
-    padding: 5px;
+    padding-top:2px;
+    padding-bottom: 2px;
+    width: 100%;
 }
 header{
     background-color: #3498db;
     color:white;
     text-align:center;
-    padding:25px;
+    padding-top:10px;
+    padding-bottom: 10px;
 }
 .button-secondary {
     background: #ecf0f1 /* this is a light blue */
