@@ -1,5 +1,5 @@
-body{margin: 0}
-html{
+body, html{
+    margin: 0;
     background-color: darkgray;
     font-family: Helvetica, sans-serif !important;
     position: relative;
@@ -19,6 +19,8 @@ nav{
     color: black;
     float: left;
     padding-top: 20px;
+    width: 10%;
+    height: auto;
 }
 a {
     color: black;
@@ -30,24 +32,22 @@ section{
     text-align: center;
     padding-top:10px;
     padding-bottom: 10px;
-    width: 100%;
+    width: 85%;
+    margin-left: 12%;
 }
 img{
     padding: 5px;
     height: 40%;
 }
-::-webkit-scrollbar{
+table::-webkit-scrollbar{
     display: none;
 }
 table {
-    display: block;
-    overflow-x: scroll;
     border-collapse: collapse;
     background-color: #ecf0f1;
-    width: 79%;
-    margin-left: 20%;
-    margin-right: 0.5%;
+    width: 100%;
 }
+
 table ,td{
     border: 1px solid black;
 }
@@ -65,7 +65,7 @@ footer{
     padding-bottom: 2px;
     bottom: 0;
     width: 100%;
-    position: absolute;
+    position: fixed;
 }
 label { /* Beschriftung auf eigener Zeile */
     display: block;
@@ -83,6 +83,6 @@ form {
     background: #ecf0f1 /* this is a light blue */
 }
 .bigger-button{
-    width: 120px;
+    width: 100%;
     height: 60px;
 }

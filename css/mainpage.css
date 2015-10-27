@@ -10,8 +10,6 @@ table::-webkit-scrollbar{
     display: none;
 }
 table {
-    display: block;
-    overflow-x: scroll;
     border-collapse: collapse;
     background-color: #ecf0f1;
     width: 90%;
@@ -54,7 +52,7 @@ header{
     background: #ecf0f1 /* this is a light blue */
 }
 .bigger-button{
-    width: 90px;
+    width: 15%;
     height: 40px;
 }
 img{
