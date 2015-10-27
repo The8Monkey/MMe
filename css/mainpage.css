@@ -47,7 +47,7 @@ header{;
     background: #3498db url("../pics/Sports_icon_bar.png") no-repeat right center;
     color:white;
     text-align:center;
-    padding: 2px 10px;
+    padding: 2px;
 }
 .button-secondary {
     background: #ecf0f1 /* this is a light blue */
