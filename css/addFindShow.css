@@ -4,6 +4,7 @@ html{
     font-family: Helvetica, sans-serif !important;
     position: relative;
     min-height: 100%;
+    width: 100%;
 }
 header{
     background-color: #3498db;
@@ -28,17 +29,24 @@ section{
     height: 100%;
     text-align: center;
     padding-top:10px;
+    padding-bottom: 10px;
     width: 100%;
 }
 img{
     padding: 5px;
     height: 40%;
 }
+::-webkit-scrollbar{
+    display: none;
+}
 table {
+    display: block;
+    overflow-x: scroll;
     border-collapse: collapse;
     background-color: #ecf0f1;
-    width: 85%;
-    margin-left: 12%;
+    width: 79%;
+    margin-left: 20%;
+    margin-right: 0.5%;
 }
 table ,td{
     border: 1px solid black;
@@ -49,9 +57,9 @@ table ,td{
     font-size: 18pt;
 }
 footer{
+    clear: both;
     background-color: #2980b9;
     color: white;
-    clear: both;
     text-align: center;
     padding-top:2px;
     padding-bottom: 2px;

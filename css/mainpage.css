@@ -1,16 +1,22 @@
 body{margin: 0px}
 html{
+    min-width: 630px;
     background-color: #bdc3c7;
     font-family: Helvetica, sans-serif !important;
     position: relative;
     min-height: 100%;
 }
+table::-webkit-scrollbar{
+    display: none;
+}
 table {
+    display: block;
+    overflow-x: scroll;
     border-collapse: collapse;
     background-color: #ecf0f1;
     width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 4.9%;
+    margin-right: 4.9%;
 }
 table ,td{
     border: 1px solid black;
