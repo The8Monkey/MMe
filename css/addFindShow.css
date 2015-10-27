@@ -1,15 +1,28 @@
 body{margin: 0}
 html{
-    background: url("../pics/background.jpg") no-repeat right bottom;
+    background: url("../pics/background.png") no-repeat right bottom;
+    background-color: #eee;
     font-family: Helvetica, sans-serif !important;
     position: relative;
     min-height: 100%;
     width: 100%;
 }
+a {
+    color: black;
+    text-decoration: none;
+}
+header, footer, header a {
+    background-color: #edffcf;
+    color:black;
+    text-shadow: white 0 0 5px;
+}
 header{
-    background: #e74c3c url("../pics/Sports_icon_bar.png") no-repeat right center;
-    color:white;
-    text-align:center;
+    /*background: url("../pics/Sports_icon_bar.png") no-repeat right center;
+    */
+    background-image: url("../pics/Sports_icon_bar.png");
+    background-position: right;
+    background-repeat: repeat-x;
+    text-align:left;
     padding: 2px 10px;
     width: 100%;
 }
@@ -19,10 +32,7 @@ nav{
     float: left;
     padding-top: 20px;
 }
-a {
-    color: black;
-    text-decoration: none;
-}
+
 section{
     color: black;
     height: 100%;
@@ -56,8 +66,6 @@ table ,td{
 }
 footer{
     clear: both;
-    background-color: #c0392b;
-    color: white;
     text-align: center;
     padding-top:2px;
     padding-bottom: 2px;
