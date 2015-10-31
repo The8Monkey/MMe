@@ -41,7 +41,6 @@ footer{
     padding-bottom: 2px;
     bottom: 0;
     width: 100%;
-    position: absolute;
 }
 
 header, footer, header a {
@@ -54,7 +53,8 @@ header{
     background-position: right;
     background-repeat: repeat-x;
     text-align:left;
-    padding: 2px 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     width: 100%;
 }
 .button-secondary {
@@ -63,6 +63,9 @@ header{
 .bigger-button{
     width: 15%;
     height: 40px;
+}
+.button-color{
+    background-color: #edffcf;
 }
 img{
     padding: 5px;
