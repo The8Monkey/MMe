@@ -1,14 +1,16 @@
 function formularChecker() {
-    var x, text;
+    var plz, text;
 
     // Get the value of the input field with id="numb"
-    x = document.getElementById("numb").value;
+    x = document.getElementById("plz").value;
 
     // If x is Not a Number or less than one or greater than 10
-    if (isNaN(x) || x < 1 || x > 10) {
-        text = "Input not valid";
+    if (isNaN(x) || x < 10000 || x > 15000) {
+        text = "your address is not in berlin";
     } else {
-        text = "Input OK";
+        text = "address OK";
     }
-    document.getElementById("demo").innerHTML = text;
+    console.log(text);
+
+    document.getElementById("text").innerHTML = text;
 }
