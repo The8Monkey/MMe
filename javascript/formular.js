@@ -14,3 +14,6 @@ function formularChecker() {
 
     document.getElementById("text").innerHTML = text;
 }
+setTimeout(function(){
+    window.location='../index.html';
+}, 5000);
