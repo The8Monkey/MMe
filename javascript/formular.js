@@ -26,8 +26,8 @@ function checkPLZ() {
         text = "your PLZ is not in berlin";
         element.style.backgroundColor = "#f39c12";
     } else {
-        element.style.backgroundColor = "";
-        text = "PLZ OK";
+        element.style.backgroundColor = "#2ecc71";
+        text = "";
     }
     console.log(text);
 
@@ -36,6 +36,18 @@ function checkPLZ() {
 
 function checkEmail() {
     var element = document.getElementById("email");
-    var plz = element.value;
+    var email = element.value;
     var text;
+    var regex = new RegExp("/\S+@\S+\.\S+/");
+    if(regex.test(email)) {
+        text = "your email adress is invalid";
+        element.style.backgroundColor = "#f39c12";
+    } else {
+        element.style.backgroundColor = "#2ecc71";
+        text = "";
+    }
+    console.log(text);
+
+    document.getElementsByClassName("text").innerHTML = text;
+
 }
