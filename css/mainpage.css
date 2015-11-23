@@ -2,7 +2,7 @@ body{
     margin: 0px
 }
 html{
-    background: url("../pics/background.jpg") no-repeat right bottom;
+    background: url("../pics/background.png") no-repeat right bottom;
     font-family: Helvetica, sans-serif !important;
     position: relative;
     min-height: 100%;
