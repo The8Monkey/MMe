@@ -15,9 +15,24 @@ function formularChecker() {
 
     document.getElementById("text").innerHTML = text;
 }
-//setTimeout(function(){
-//    window.location='../index.html';
-//}, 5000);
+
+function checkURL(){
+    var element = document.getElementById("url");
+    var url = element.value;
+    var text;
+    var regex = /\.(jpeg|jpg|gif|png)$/;
+    if(regex.test(url)){
+        element.style.backgroundColor = "#2ecc71";
+        text = "";
+    } else {
+        text = "your image URL is invalid";
+        element.style.backgroundColor = "#f39c12";
+    }
+    console.log(text);
+    document.getElementById("text").innerHTML = text;
+
+}
+
 function checkPLZ() {
     var element = document.getElementById("plz");
     var plz = element.value;
@@ -30,7 +45,6 @@ function checkPLZ() {
         text = "";
     }
     console.log(text);
-
     document.getElementById("text").innerHTML = text;
 }
 
@@ -38,16 +52,14 @@ function checkEmail() {
     var element = document.getElementById("email");
     var email = element.value;
     var text;
-    var regex = new RegExp("/\S+@\S+\.\S+/");
+    var regex = /\S+@\S+\.\S+/;
     if(regex.test(email)) {
-        text = "your email adress is invalid";
-        element.style.backgroundColor = "#f39c12";
-    } else {
         element.style.backgroundColor = "#2ecc71";
         text = "";
+    } else {
+        text = "your email adress is invalid";
+        element.style.backgroundColor = "#f39c12";
     }
     console.log(text);
-
-    document.getElementsByClassName("text").innerHTML = text;
-
+    document.getElementById("text").innerHTML = text;
 }

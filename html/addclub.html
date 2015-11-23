@@ -25,7 +25,7 @@
         <form action="../php/from_response.php" method="post">
             <fieldset><legend>Register Your Club</legend>
                 <label for="url">Image URL:</label>
-                <input type="url" id="url" name="url" size="25" maxlength="30">
+                <input type="url" id="url" name="url" size="25" onchange="checkURL();">
                 <br><br>
                 <label for="clubname">Sport club name:</label>
                 <input type="text" id="clubname" name="clubname" size="25" maxlength="30" required>
