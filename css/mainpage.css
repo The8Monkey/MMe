@@ -1,3 +1,7 @@
+@font-face {
+    font-family: cutomfont;
+    src: url("../fonts/Aaargh.ttf");
+}
 body{
     margin: 0px
 }
@@ -45,6 +49,7 @@ footer{
 }
 
 header, footer, header a {
+    font-family: cutomfont, serif;
     background-color: #edffcf;
     color:black;
     text-shadow: white 0 0 5px;
