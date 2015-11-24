@@ -18,7 +18,7 @@ function checkString(id, failId){
     var element = document.getElementById(id);
     var string = element.value;
     var text;
-    var regex = /^\D+/;
+    var regex = /^\D+$/;
     if(regex.test(string)){
         element.style.backgroundColor = "#2ecc71";
         text = "";
@@ -34,7 +34,7 @@ function checkNumber(id, failId){
     var element = document.getElementById(id);
     var number = element.value;
     var text;
-    var regex = /^\d+/;
+    var regex = /^\d+$/;
     if(regex.test(number)){
         element.style.backgroundColor = "#2ecc71";
         text = "";
@@ -47,7 +47,7 @@ function checkNumber(id, failId){
 }
 
 function checkPLZ(failId) {
-    var element = document.getElementById("plz");
+    var element = document.getElementById("zip");
     var plz = element.value;
     var text;
     var regex = /(^\d{5})(?:(?!.))/;
