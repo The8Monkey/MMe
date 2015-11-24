@@ -33,16 +33,36 @@ function checkURL(){
 
 }
 
+function checkPattern(element, pattern, okVal, failVal) {
+    element = document.getElementById(element);
+    var value = element.value;
+    var text;
+    var bool = pattern.test(value);
+    if(bool) {
+        text = okVal;
+        element.style.backgroundColor = "#2ecc71";
+    } else {
+        text = failVal;
+        element.style.backgroundColor = "#f39c12";
+    }
+    element.innerHTML = text;
+    return bool;
+}
+
 function checkPLZ() {
     var element = document.getElementById("plz");
     var plz = element.value;
     var text;
-    if (plz == "" | plz < 10000 | plz > 15000) {
+    var regex = /(^\d{5})(?:(?!.))/;
+    if(regex.test(plz)){
+        text = "your PLZ is valid";
+        element.style.backgroundColor = "#2ecc71";
+    }else if ( plz < 10000 || plz > 15000 ) {
         text = "your PLZ is not in berlin";
         element.style.backgroundColor = "#f39c12";
     } else {
-        element.style.backgroundColor = "#2ecc71";
-        text = "";
+        element.style.backgroundColor = "#f39c12";
+        text = "your PLZ is not valid";
     }
     console.log(text);
     document.getElementById("text").innerHTML = text;
