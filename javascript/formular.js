@@ -33,22 +33,6 @@ function checkURL(){
 
 }
 
-function checkPattern(element, pattern, okVal, failVal) {
-    element = document.getElementById(element);
-    var value = element.value;
-    var text;
-    var bool = pattern.test(value);
-    if(bool) {
-        text = okVal;
-        element.style.backgroundColor = "#2ecc71";
-    } else {
-        text = failVal;
-        element.style.backgroundColor = "#f39c12";
-    }
-    element.innerHTML = text;
-    return bool;
-}
-
 function checkPLZ() {
     var element = document.getElementById("plz");
     var plz = element.value;
@@ -83,3 +67,19 @@ function checkEmail() {
     console.log(text);
     document.getElementById("text").innerHTML = text;
 }
+
+//function checkPattern(element, pattern, okVal, failVal) {
+//    element = document.getElementById(element);
+//    var value = element.value;
+//    var text;
+//    var bool = pattern.test(value);
+//    if(bool) {
+//        text = okVal;
+//        element.style.backgroundColor = "#2ecc71";
+//    } else {
+//        text = failVal;
+//        element.style.backgroundColor = "#f39c12";
+//    }
+//    element.innerHTML = text;
+//    return bool;
+//}
