@@ -25,28 +25,26 @@
         <form action="../php/from_response.php" method="post">
             <fieldset><legend>Register Your Club</legend>
                 <label for="url">Image URL:</label>
-                <input type="url" id="url" name="url" size="25" onchange="checkURL();">
-                <br><br>
+                <input id="url" name="url" size="25" onchange="checkURL('failURL');">
+                <p id="failURL"></p>
                 <label for="clubname">Sport club name:</label>
-                <input type="text" id="clubname" name="clubname" size="25" maxlength="30" onchange="checkString('clubname')" required>
-                <br><br>
-                <label for="straße">Straße:</label>
-                <input type="text" id="straße" name="straße" size="25" maxlength="30" onchange="checkString('straße')"required>
-                <br><br>
-                <label for="hausnummer">Hausnummer:</label>
-                <input type="text" id ="hausnummer" name="hausnummer" size="25" maxlength="30" onchange="checkNumber('hausnummer')" required>
-                <br><br>
-                <label for="plz">PLZ:</label>
-                <input type="text" id="plz" name="plz" size="25" maxlength="30" maxlength="30" onchange="checkPLZ();" required>
-                <br><br>
+                <input id="clubname" name="clubname" size="25" maxlength="30" onchange="checkString('clubname', 'failName')" required>
+                <p id="failName"></p>
+                <label for="street">Street name:</label>
+                <input id="street" name="street" size="25" maxlength="30" onchange="checkString('street','failStreet')"required>
+                <p id="failStreet"></p>
+                <label for="housenumber">House number:</label>
+                <input id ="housenumber" name="housenumber" size="25" maxlength="30" onchange="checkNumber('housenumber','failhouseumber')" required>
+                <p id="failhousenumber"></p>
+                <label for="zip">ZIP-Code:</label>
+                <input id="zip" name="zip" size="25" maxlength="30" maxlength="30" onchange="checkPLZ('failzip')" required>
+                <p id="failzip"></p>
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" size="25" maxlength="30" onchange="checkEmail()" required>
-                <br><br>
+                <input id="email" name="email" size="25" maxlength="30" onchange="checkEmail('failmail')" required>
+                <p id="failmail"></p>
                 <label for="url">Phonenumber:</label>
-                <input type="tel" id="phonenumber" name="phonenumber" size="25" maxlength="30" onchange="checkNumber('phonenumber')">
-                <br><br>
-                <p id="text"></p>
-                <br><br>
+                <input id="phonenumber" name="phonenumber" size="25" maxlength="30" onchange="checkNumber('phonenumber','failphone')">
+                <p id="failphone"></p>
                 <button type="submit"> submit </button>
             </fieldset>
         </form>

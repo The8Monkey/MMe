@@ -1,22 +1,4 @@
-function formularChecker() {
-    var plz, text;
-
-    // Get the value of the input field with id="numb"
-    x = document.getElementById("plz").value;
-
-    // If x is Not a Number or less than one or greater than 10
-    if (isNaN(x) || x < 10000 || x > 15000) {
-        text = "your address is not in berlin";
-        document.getElementbyId("plz").style.backgroundColor = "red";
-    } else {
-        text = "address OK";
-    }
-    console.log(text);
-
-    document.getElementById("text").innerHTML = text;
-}
-
-function checkURL(){
+function checkURL(failId){
     var element = document.getElementById("url");
     var url = element.value;
     var text;
@@ -25,14 +7,14 @@ function checkURL(){
         element.style.backgroundColor = "#2ecc71";
         text = "";
     } else {
-        text = "your image URL is invalid";
+        text = "your image URL is invalid <br /> (only .jpeg .jpg .gif or .png files)";
         element.style.backgroundColor = "#f39c12";
     }
     console.log(text);
-    document.getElementById("text").innerHTML = text;
+    document.getElementById(failId).innerHTML = text;
 }
 
-function checkString(id){
+function checkString(id, failId){
     var element = document.getElementById(id);
     var string = element.value;
     var text;
@@ -45,10 +27,10 @@ function checkString(id){
         element.style.backgroundColor = "#f39c12";
     }
     console.log(text);
-    document.getElementById("text").innerHTML = text;
+    document.getElementById(failId).innerHTML = text;
 }
 
-function checkNumber(id){
+function checkNumber(id, failId){
     var element = document.getElementById(id);
     var number = element.value;
     var text;
@@ -61,10 +43,10 @@ function checkNumber(id){
         element.style.backgroundColor = "#f39c12";
     }
     console.log(text);
-    document.getElementById("text").innerHTML = text;
+    document.getElementById(failId).innerHTML = text;
 }
 
-function checkPLZ() {
+function checkPLZ(failId) {
     var element = document.getElementById("plz");
     var plz = element.value;
     var text;
@@ -80,10 +62,10 @@ function checkPLZ() {
         text = "your PLZ is not valid";
     }
     console.log(text);
-    document.getElementById("text").innerHTML = text;
+    document.getElementById(failId).innerHTML = text;
 }
 
-function checkEmail() {
+function checkEmail(failId) {
     var element = document.getElementById("email");
     var email = element.value;
     var text;
@@ -96,7 +78,7 @@ function checkEmail() {
         element.style.backgroundColor = "#f39c12";
     }
     console.log(text);
-    document.getElementById("text").innerHTML = text;
+    document.getElementById(failId).innerHTML = text;
 }
 
 //function checkPattern(element, pattern, okVal, failVal) {
