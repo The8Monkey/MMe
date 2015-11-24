@@ -30,7 +30,38 @@ function checkURL(){
     }
     console.log(text);
     document.getElementById("text").innerHTML = text;
+}
 
+function checkString(id){
+    var element = document.getElementById(id);
+    var string = element.value;
+    var text;
+    var regex = /^\D+/;
+    if(regex.test(string)){
+        element.style.backgroundColor = "#2ecc71";
+        text = "";
+    } else {
+        text = "your "+id+" is invalid";
+        element.style.backgroundColor = "#f39c12";
+    }
+    console.log(text);
+    document.getElementById("text").innerHTML = text;
+}
+
+function checkNumber(id){
+    var element = document.getElementById(id);
+    var number = element.value;
+    var text;
+    var regex = /^\d+/;
+    if(regex.test(number)){
+        element.style.backgroundColor = "#2ecc71";
+        text = "";
+    } else {
+        text = "your "+id+" is invalid";
+        element.style.backgroundColor = "#f39c12";
+    }
+    console.log(text);
+    document.getElementById("text").innerHTML = text;
 }
 
 function checkPLZ() {
