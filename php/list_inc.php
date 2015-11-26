@@ -2,13 +2,14 @@
 <html lang="de">
 <head>
     <meta charset="utf-8">
-    <title>User List</title>
+    <title>Sportclub List</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <div id="container">
     <div class="row">
-        <h4 class="span5 offset1">User List (DB: testdb, Table: user)</h4>
+        <h4 class="span5 offset1">Sportclub List (DB: sportfinder, Table: sportclub)</h4>
     </div>
     <br>
     <div class="row">
@@ -18,16 +19,14 @@
             </form>
         </div>
     </div>
-    <?php foreach ($user as $user): ?>
+    <?php foreach ($sportclub as $sportclub): ?>
         <div class="row">
             <form class="form-inline" method="post">
                 <div class="span2 offset1">
-                    <label><?php echo(htmlspecialchars($user['firstname'],
+                    <label><?php echo(htmlspecialchars($sportclub['name'],
                                 ENT_QUOTES, 'UTF-8') . " " .
-                            htmlspecialchars($user['secondname'], ENT_QUOTES, 'UTF-8')); ?></label>
+                            htmlspecialchars($sportclub['street'], ENT_QUOTES, 'UTF-8')); ?></label>
                 </div>
-                <input type="hidden" class="input-small" name="id" value="<?php
-                echo(htmlspecialchars($user['id'], ENT_QUOTES, 'UTF-8'));?>">
                 <div class="span1">
                     <button type="submit" name="action" value="Edit"
                             class=".btn-mini">Edit</button>

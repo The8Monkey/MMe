@@ -5,15 +5,15 @@ ini_set('display_errors', 1);
 // add user ****************************************************************
 if (isset($_GET['add']))
 {
-    $pageTitle = 'New User';
+    $pageTitle = 'New sportclub';
     $action = 'addform';
-    $firstname = '';
-    $secondname = '';
-    $email = '';
-    $password = '';
-    $id = '';
-    $passwordtype='text';
-    $button = 'Add user';
+    $name = '';
+    $street = '';
+    $streetnumber = '';
+    $zip = '';
+    $maill = '';
+    $phonenumber = '';
+    $button = 'Add sportclub';
     include 'form_inc.php';
     exit();
     }
@@ -22,16 +22,20 @@ if (isset($_GET['add']))
         include 'connect_inc.php';
         try
         {
-            $sql = 'INSERT INTO user SET
-            firstname = :firstname,
-            secondname = :secondname,
-            email = :email,
-            password = MD5(:password)';
+            $sql = 'INSERT INTO sportclub SET
+            name = :name,
+            street = :street,
+            streetnumber = :streetnumber,
+            zip = :zip,
+            maill = :maill,
+            phonenumber = :phonenumber';
             $s = $pdo->prepare($sql);
-            $s->bindValue(':firstname', $_POST['firstname']);
-            $s->bindValue(':secondname', $_POST['secondname']);
-            $s->bindValue(':email', $_POST['email']);
-            $s->bindValue(':password', $_POST['password']);
+            $s->bindValue(':name', $_POST['name']);
+            $s->bindValue(':street', $_POST['street']);
+            $s->bindValue(':streetnumber', $_POST['streetnumber']);
+            $s->bindValue(':zip', $_POST['zip']);
+            $s->bindValue(':maill', $_POST['maill']);
+            $s->bindValue(':phonenumber', $_POST['phonenumber']);
             $s->execute();
         }
         catch (PDOException $e)
@@ -50,9 +54,9 @@ if (isset($_POST['action']) and $_POST['action'] == 'Edit')
     try
     {
         $sql =
-            'SELECT id, firstname, secondname, email, password FROM user WHERE id = :id';
+            'SELECT name, street, streetnumber, zip, maill, phonenumber FROM sportclub WHERE name = :name';
         $s = $pdo->prepare($sql);
-        $s->bindValue(':id', $_POST['id']);
+        $s->bindValue(':name', $_POST['name']);
         $s->execute();
     }
     catch (PDOException $e)
@@ -64,13 +68,13 @@ if (isset($_POST['action']) and $_POST['action'] == 'Edit')
     $row = $s->fetch();
     $pageTitle = 'Edit User';
     $action = 'editform';
-    $firstname = $row['firstname'];
-    $secondname = $row['secondname'];
-    $email = $row['email'];
-    $password = $row['password'];
-    $id = $row['id'];
-    $passwordtype='hidden';
-    $button = 'Update user';
+    $name = $row['name'];
+    $street = $row['street'];
+    $streetnumber = $row['streetnumber'];
+    $zip = $row['zip'];
+    $maill = $row['maill'];
+    $phonenumber = $row['phonenumber'];
+    $button = 'Update sportclub';
     include 'form_inc.php';
     exit();
 }
@@ -79,18 +83,20 @@ if (isset($_GET['editform']))
     include 'connect_inc.php';
     try
     {
-        $sql = 'UPDATE user SET
-         firstname = :firstname,
-         secondname = :secondname,
-         email = :email,
-         password = :password
-         WHERE id = :id';
+        $sql = 'UPDATE sportclub SET
+          name = :name,
+          street = :street,
+          streetnumber = :streetnumber,
+          zip = :zip,
+          maill = :maill,
+          phonenumber = :phonenumber';
         $s = $pdo->prepare($sql);
-        $s->bindValue(':id', $_POST['id']);
-        $s->bindValue(':firstname', $_POST['firstname']);
-        $s->bindValue(':secondname', $_POST['secondname']);
-        $s->bindValue(':email', $_POST['email']);
-        $s->bindValue(':password', $_POST['password']);
+        $s->bindValue(':name', $_POST['name']);
+        $s->bindValue(':street', $_POST['street']);
+        $s->bindValue(':streetnumber', $_POST['streetnumber']);
+        $s->bindValue(':zip', $_POST['zip']);
+        $s->bindValue(':maill', $_POST['maill']);
+        $s->bindValue(':phonenumber', $_POST['phonenumber']);
         $s->execute();
     }
     catch (PDOException $e)
@@ -108,14 +114,14 @@ if (isset($_POST['action']) and $_POST['action'] == 'Delete')
     include 'connect_inc.php';
     try
     {
-        $sql = 'DELETE FROM user WHERE id = :id';
+        $sql = 'DELETE FROM sportclub WHERE name = :name';
         $s = $pdo->prepare($sql);
-        $s->bindValue(':id', $_POST['id']);
+        $s->bindValue(':name', $_POST['name']);
         $s->execute();
     }
     catch (PDOException $e)
     {
-        $error = 'Error deleting user: '.$e->getMessage();
+        $error = 'Error deleting sportclub: '.$e->getMessage();
         include 'error.php';
         exit();
     }
@@ -125,18 +131,20 @@ if (isset($_POST['action']) and $_POST['action'] == 'Delete')
 // AND display user list ***************************************************
 include 'connect_inc.php';
 try {
-    $result = $pdo->query('SELECT * FROM user');
+    $result = $pdo->query('SELECT * FROM sportclub');
 } catch (PDOException $e) {
-    $error = 'QUERY ERROR: SELECT * FROM user: '.$e->getMessage();
+    $error = 'QUERY ERROR: SELECT * FROM sportclub: '.$e->getMessage();
     include 'error.php';
     exit();
 }
 foreach ($result as $row) {
-    $user[]=array( 'id' => $row['id'],
-        'firstname' => $row['firstname'],
-        'secondname' => $row['secondname'],
-        'email' => $row['email'],
-        'password' => $row['password']);
+    $sportclub[]=array(
+        'name' => $row['name'],
+        'street' => $row['street'],
+        'streetnumber' => $row['streetnumber'],
+        'zip' => $row['zip'],
+        'maill' => $row['maill'],
+        'phonenumber' => $row['phonenumber']);
 }
 include 'list_inc.php';
 
