@@ -18,10 +18,10 @@
     echo(htmlspecialchars($action, ENT_QUOTES, 'UTF-8')); ?>" method="post">
         <fieldset>
             <div class="control-group">
-                <label class="control-label" for="name">name</label>
+                <label class="control-label" for="clubname">clubname</label>
                 <div class="controls">
-                    <input type="text" id="name" name="name" value="<?php
-                    echo(htmlspecialchars($name, ENT_QUOTES, 'UTF-8')); ?>">
+                    <input type="text" id="clubname" name="clubname" value="<?php
+                    echo(htmlspecialchars($clubname, ENT_QUOTES, 'UTF-8')); ?>">
                 </div>
             </div>
             <div class="control-group">
@@ -46,10 +46,10 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="mail">mail</label>
+                <label class="control-label" for="maill">mail</label>
                 <div class="controls">
-                    <input type="email" id="mail" name="mail" value="<?php
-                    echo(htmlspecialchars($streetnumber, ENT_QUOTES, 'UTF-8')); ?>">
+                    <input type="text" id="maill" name="maill" value="<?php
+                    echo(htmlspecialchars($maill, ENT_QUOTES, 'UTF-8')); ?>">
                 </div>
             </div>
             <div class="control-group">

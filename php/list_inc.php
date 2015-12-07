@@ -23,18 +23,26 @@
         <div class="row">
             <form class="form-inline" method="post">
                 <div class="span2 offset1">
-                    <label><?php echo(htmlspecialchars($sportclub['name'],
+                    <label><?php echo(htmlspecialchars($sportclub['clubname'],
                                 ENT_QUOTES, 'UTF-8') . " " .
-                            htmlspecialchars($sportclub['street'], ENT_QUOTES, 'UTF-8')); ?></label>
+                            htmlspecialchars($sportclub['street'], ENT_QUOTES, 'UTF-8')
+                            . " " .
+                            htmlspecialchars($sportclub['streetnumber'], ENT_QUOTES, 'UTF-8')
+                            . " " .
+                            htmlspecialchars($sportclub['zip'], ENT_QUOTES, 'UTF-8')
+                            . " " .
+                            htmlspecialchars($sportclub['maill'], ENT_QUOTES, 'UTF-8')
+                            . " " .
+                            htmlspecialchars($sportclub['phonenumber'], ENT_QUOTES, 'UTF-8')
+                        ); ?>
+                        <button type="submit" name="action" value="Edit"
+                                    class=".btn-mini">Edit</button>
+                        <button type="submit" name="action" value="Delete"
+                                    class=".btn-mini">Delete</button>
+                    </label>
                 </div>
-                <div class="span1">
-                    <button type="submit" name="action" value="Edit"
-                            class=".btn-mini">Edit</button>
-                </div>
-                <div class="span1">
-                    <button type="submit" name="action" value="Delete"
-                            class=".btn-mini">Delete</button>
-                </div>
+                    <input type="hidden" class="input-small" name="clubname" value="<?php
+                    echo(htmlspecialchars($sportclub['clubname'], ENT_QUOTES, 'UTF-8'));?>">
             </form>
         </div>
     <?php endforeach; ?>

@@ -7,12 +7,14 @@ if (isset($_GET['add']))
 {
     $pageTitle = 'New sportclub';
     $action = 'addform';
-    $name = '';
+    $clubname = '';
     $street = '';
     $streetnumber = '';
     $zip = '';
     $maill = '';
     $phonenumber = '';
+    $lng = '';
+    $lat = '';
     $button = 'Add sportclub';
     include 'form_inc.php';
     exit();
@@ -23,24 +25,28 @@ if (isset($_GET['add']))
         try
         {
             $sql = 'INSERT INTO sportclub SET
-            name = :name,
+            clubname = :clubname,
             street = :street,
             streetnumber = :streetnumber,
             zip = :zip,
             maill = :maill,
-            phonenumber = :phonenumber';
+            phonenumber = :phonenumber,
+            lng = :lng;
+            lat = :lat';
             $s = $pdo->prepare($sql);
-            $s->bindValue(':name', $_POST['name']);
-            $s->bindValue(':street', $_POST['street']);
-            $s->bindValue(':streetnumber', $_POST['streetnumber']);
-            $s->bindValue(':zip', $_POST['zip']);
-            $s->bindValue(':maill', $_POST['maill']);
-            $s->bindValue(':phonenumber', $_POST['phonenumber']);
+            $s->bindParam(':clubname', $_POST['clubname']);
+            $s->bindParam(':street', $_POST['street']);
+            $s->bindParam(':streetnumber', $_POST['streetnumber']);
+            $s->bindParam(':zip', $_POST['zip']);
+            $s->bindParam(':maill', $_POST['maill']);
+            $s->bindParam(':phonenumber', $_POST['phonenumber']);
+            $s->bindParam(':lng',$lng=123);
+            $s->bindParam(':lat',$lat=123);
             $s->execute();
         }
         catch (PDOException $e)
         {
-            $error = 'Error adding user: '.$e->getMessage();
+            $error = 'Error adding sportclub: '.$e->getMessage();
             include 'error.php';
             exit();
         }
@@ -54,9 +60,10 @@ if (isset($_POST['action']) and $_POST['action'] == 'Edit')
     try
     {
         $sql =
-            'SELECT name, street, streetnumber, zip, maill, phonenumber FROM sportclub WHERE name = :name';
+            'SELECT clubname, street, streetnumber,zip, maill, phonenumber
+              FROM sportclub WHERE clubname = :clubname';
         $s = $pdo->prepare($sql);
-        $s->bindValue(':name', $_POST['name']);
+        $s->bindParam(':clubname' , $_POST['clubname']);
         $s->execute();
     }
     catch (PDOException $e)
@@ -66,9 +73,9 @@ if (isset($_POST['action']) and $_POST['action'] == 'Edit')
         exit();
     }
     $row = $s->fetch();
-    $pageTitle = 'Edit User';
+    $pageTitle = 'Edit Sportclub';
     $action = 'editform';
-    $name = $row['name'];
+    $clubname = $row["clubname"];
     $street = $row['street'];
     $streetnumber = $row['streetnumber'];
     $zip = $row['zip'];
@@ -84,14 +91,15 @@ if (isset($_GET['editform']))
     try
     {
         $sql = 'UPDATE sportclub SET
-          name = :name,
+          clubname = :clubname,
           street = :street,
           streetnumber = :streetnumber,
           zip = :zip,
           maill = :maill,
-          phonenumber = :phonenumber';
+          phonenumber = :phonenumber
+          WHERE clubname = :clubname';
         $s = $pdo->prepare($sql);
-        $s->bindValue(':name', $_POST['name']);
+        $s->bindValue(':clubname', $_POST['clubname']);
         $s->bindValue(':street', $_POST['street']);
         $s->bindValue(':streetnumber', $_POST['streetnumber']);
         $s->bindValue(':zip', $_POST['zip']);
@@ -114,9 +122,9 @@ if (isset($_POST['action']) and $_POST['action'] == 'Delete')
     include 'connect_inc.php';
     try
     {
-        $sql = 'DELETE FROM sportclub WHERE name = :name';
+        $sql = 'DELETE FROM sportclub WHERE clubname = :clubname';
         $s = $pdo->prepare($sql);
-        $s->bindValue(':name', $_POST['name']);
+        $s->bindValue(':clubname', $_POST['clubname']);
         $s->execute();
     }
     catch (PDOException $e)
@@ -128,7 +136,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'Delete')
     header('Location: .');
     exit();
 }
-// AND display user list ***************************************************
+// AND display sportclub list ***************************************************
 include 'connect_inc.php';
 try {
     $result = $pdo->query('SELECT * FROM sportclub');
@@ -139,12 +147,12 @@ try {
 }
 foreach ($result as $row) {
     $sportclub[]=array(
-        'name' => $row['name'],
+        'clubname' => $row['clubname'],
         'street' => $row['street'],
         'streetnumber' => $row['streetnumber'],
         'zip' => $row['zip'],
         'maill' => $row['maill'],
         'phonenumber' => $row['phonenumber']);
 }
+//include '../html/newLayout.html';
 include 'list_inc.php';
-
