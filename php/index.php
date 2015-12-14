@@ -154,5 +154,5 @@ foreach ($result as $row) {
         'maill' => $row['maill'],
         'phonenumber' => $row['phonenumber']);
 }
-//include '../html/newLayout.html';
-include 'list_inc.php';
+include '../html/newLayout.html';
+//include 'list_inc.php';
