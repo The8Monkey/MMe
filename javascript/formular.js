@@ -52,7 +52,7 @@ function checkPLZ(failId) {
     var text;
     var regex = /(^\d{5})(?:(?!.))/;
     if(regex.test(plz)){
-        text = "your PLZ is valid";
+        text = "";
         element.style.backgroundColor = "#2ecc71";
     }else if ( plz < 10000 || plz > 15000 ) {
         text = "your PLZ is not in berlin";
@@ -66,7 +66,7 @@ function checkPLZ(failId) {
 }
 
 function checkEmail(failId) {
-    var element = document.getElementById("email");
+    var element = document.getElementById("maill");
     var email = element.value;
     var text;
     var regex = /\S+@\S+\.\S+/;

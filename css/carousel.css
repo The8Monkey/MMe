@@ -47,6 +47,14 @@ footer{
   width: auto;
 }
 
+.navbar-nav{
+  margin-top: 6px;
+}
+
+.navbar {
+  min-height: auto;
+}
+
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */

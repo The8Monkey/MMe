@@ -15,7 +15,7 @@ if (isset($_GET['add']))
     $phonenumber = '';
     $lng = '';
     $lat = '';
-    $button = 'Add sportclub';
+    $button = 'Add Sportclub';
     include 'form_inc.php';
     exit();
     }
@@ -154,5 +154,4 @@ foreach ($result as $row) {
         'maill' => $row['maill'],
         'phonenumber' => $row['phonenumber']);
 }
-include '../html/newLayout.html';
-//include 'list_inc.php';
+include 'list_inc.php';

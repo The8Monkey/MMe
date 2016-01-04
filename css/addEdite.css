@@ -1,0 +1,45 @@
+html{
+    min-height: 100%;
+}
+body {
+    margin: 0;
+    padding-bottom: 40px;
+    color: #5a5a5a;
+    background: url("../pics/background.png") no-repeat right bottom;
+    font-family: Helvetica, sans-serif !important;
+    position: relative;
+}
+footer{
+    font-family: cutomfont, serif;
+    background-color: #edffcf;
+    color:black;
+    clear: both;
+    text-align: center;
+    padding-top:8px;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+}
+section {
+    color: black;
+    height: 100%;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+label {
+    display: block;
+    cursor: pointer;
+}
+form {
+    background-color: #eee;
+    width: 260px; /* Breite des Formulars */
+    padding: 20px;
+    border: 1px solid #8c8c8c;
+    margin-left: auto;
+    margin-right: auto;
+}
+#container{
+    margin-top: 80px;
+}
