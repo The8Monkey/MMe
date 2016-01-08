@@ -33,10 +33,10 @@
     </div>
 </div>
 
-<div id="container">
+<div id="container" class="table-responsive">
     <form class="form-inline" method="post">
         <br>
-        <table>
+        <table class="table">
             <tr>
                 <th>clubname</th>
                 <th>street</th>
@@ -54,7 +54,7 @@
                     <td><?=$sportclub['zip']?></td>
                     <td><?=$sportclub['maill']?></td>
                     <td><?=$sportclub['phonenumber']?></td>
-                    <td align="center"><button type="submit" name="action" value="Edit"
+                    <td><button type="submit" name="action" value="Edit"
                                                class=".btn-mini">Edit</button>
                         <button type="submit" name="action" value="Delete"
                                 class=".btn-mini">Delete</button></td>
