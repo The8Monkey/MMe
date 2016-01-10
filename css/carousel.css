@@ -80,6 +80,7 @@ table{
   background-color: #edffcf;
   margin-bottom: 20px;
 }
+
 #container{
   margin-left: 5%;
   width: 90%;
@@ -189,3 +190,8 @@ table{
     margin-top: 120px;
   }
 }
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+

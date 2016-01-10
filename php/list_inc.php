@@ -6,7 +6,6 @@
     <script language="javascript" type="text/javascript" src="../javascript/map.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js"></script>
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/carousel.css">
 </head>
 
