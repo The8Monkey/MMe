@@ -61,6 +61,7 @@ $(function () {
             }
         });
     });
+    ///UPDATE
     $("button#update").click(function () {
         $.ajax({
             type: "POST",
@@ -86,6 +87,7 @@ $(function () {
             }
         });
     });
+    //DELETE
     $("button#delete").click(function () {
         $.ajax({
             type: "POST",
@@ -103,6 +105,7 @@ $(function () {
             }
         });
     });
+    //RESET
     $("button#reset").click(function () {
         $("#clubname_in").val("");
         $("#street_in").val("");
@@ -111,6 +114,7 @@ $(function () {
         $("#mail_in").val("");
         $("#phonenumber_in").val("");
     });
+    //FIND
     $("button#find").click(function () {
         $.ajax({
             type: "GET",
