@@ -22,7 +22,7 @@ $(function () {
     $("button#insert").click(function () {
         $.ajax({
             type: "POST",
-            url: "crud.php",
+            url: "../php/crud.php",
             data: { action: "insert",
                 clubname: $("#clubname_in").val(),
                 street: $("#street_in").val(),
@@ -65,7 +65,7 @@ $(function () {
     $("button#update").click(function () {
         $.ajax({
             type: "POST",
-            url: "crud.php",
+            url: "../php/crud.php",
             data: { action: "update",
                 clubname: $("#clubname_in").val(),
                 street: $("#street_in").val(),
@@ -79,10 +79,10 @@ $(function () {
                 var obj = $.parseJSON(msg);
                 if(obj.message){
                     $("#footerfeedback").text(obj.message); // -> main view
-                    $("#db_operations_modal #feedback").text(obj.message); // -> dialogue
+                    $("#db_operations_modal").find("#feedback").text(obj.message); // -> dialogue
                 } else {
                     $("#footerfeedback").text(obj.databaseError);
-                    $("#db_operations_modal #feedback").text(obj.message);
+                    $("#db_operations_modal").find("#feedback").text(obj.message);
                 }
             }
         });
@@ -91,7 +91,7 @@ $(function () {
     $("button#delete").click(function () {
         $.ajax({
             type: "POST",
-            url: "crud.php",
+            url: "../php/crud.php",
             data: { action: "delete",
                 id: $("#clubname_in").val()
             },
@@ -118,7 +118,7 @@ $(function () {
     $("button#find").click(function () {
         $.ajax({
             type: "GET",
-            url: "crud.php",
+            url: "../php/crud.php",
             data: { action: "find", clubname: $("#clubname_in").val() },
             dataType: "text",
             success: function (msg) {
@@ -139,7 +139,7 @@ $(function () {
     });
     // menue: show all //////////////////////////////////////////////////////////
     $("a#show_all").click(function () {
-        $.getJSON('crud.php', { action: "getall" },function (data) {
+        $.getJSON('../php/crud.php', { action: "getall" },function (data) {
             var table = '<table class="table table-bordered table-hover">';
             table+='<tr><th>Clubname</th><th>Street</th><th>Streetnumber</th><th>Zip</th><th>E-Mail</th><th>Phonenumber</th></tr>';
             $.each(data, function (item) {
