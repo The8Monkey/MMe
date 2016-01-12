@@ -19,7 +19,7 @@ $(function () {
         }
     });
     // dialogue add, find, update, delete, reset: //////////////////////////
-    $("button#insert").click(function () {
+    $("#insert").click(function () {
         $.ajax({
             type: "POST",
             url: "../php/crud.php",
@@ -56,13 +56,16 @@ $(function () {
                     if(obj.mailError){
                         outstr += obj.mailError;
                     }
+                    if(!obj.clubnameError && !obj.streetError && !obj.streetnumberError && !obj.zipError && !obj.mailError){
+                        outstr = "cannot insert multible clubs with the same name!";
+                    }
                     $("#footerfeedback").text(outstr);
                 }
             }
         });
     });
     ///UPDATE
-    $("button#update").click(function () {
+    $("#update").click(function () {
         $.ajax({
             type: "POST",
             url: "../php/crud.php",
@@ -79,21 +82,21 @@ $(function () {
                 var obj = $.parseJSON(msg);
                 if(obj.message){
                     $("#footerfeedback").text(obj.message); // -> main view
-                    $("#db_operations_modal").find("#feedback").text(obj.message); // -> dialogue
+                    $("#db_operations_modal").find("#footerfeedback").text(obj.message); // -> dialogue
                 } else {
                     $("#footerfeedback").text(obj.databaseError);
-                    $("#db_operations_modal").find("#feedback").text(obj.message);
+                    $("#db_operations_modal").find("#footerfeedback").text(obj.message);
                 }
             }
         });
     });
     //DELETE
-    $("button#delete").click(function () {
+    $("#delete").click(function () {
         $.ajax({
             type: "POST",
             url: "../php/crud.php",
             data: { action: "delete",
-                id: $("#clubname_in").val()
+                clubname: $("#clubname_in").val()
             },
             success: function (msg) {
                 var obj = $.parseJSON(msg);
@@ -106,7 +109,7 @@ $(function () {
         });
     });
     //RESET
-    $("button#reset").click(function () {
+    $("#reset").click(function () {
         $("#clubname_in").val("");
         $("#street_in").val("");
         $("#streetnumber_in").val("");
@@ -115,10 +118,10 @@ $(function () {
         $("#phonenumber_in").val("");
     });
     //FIND
-    $("button#find").click(function () {
+    $("#find").click(function () {
         $.ajax({
             type: "GET",
-            url: "../php/crud.php",
+            url:"../php/crud.php",
             data: { action: "find", clubname: $("#clubname_in").val() },
             dataType: "text",
             success: function (msg) {
@@ -137,24 +140,26 @@ $(function () {
             }
         })
     });
-    // menue: show all //////////////////////////////////////////////////////////
-    $("a#show_all").click(function () {
-        $.getJSON('../php/crud.php', { action: "getall" },function (data) {
-            var table = '<table class="table table-bordered table-hover">';
-            table+='<tr><th>Clubname</th><th>Street</th><th>Streetnumber</th><th>Zip</th><th>E-Mail</th><th>Phonenumber</th></tr>';
-            $.each(data, function (item) {
-                table += '<tr><td>' + item.clubname + '</td><td>' + item.street + '</td><td>' + item.streetnumber + '</td>' +
-                    '<td>' + item.zip + '</td><td>' + item.mail + '</td><td>' + item.phonenumber + '</td></tr>';
-            });
-            table += '</table>';
-            $("#content").html(table);
-            $("#footerfeedback").text("show all done...");
-        }).fail(function (xhr) {
-            $("#footerfeedback").text("show all failure");
-            console.log(xhr.status);
-            console.log(xhr.response);
-            console.log(xhr.responseText);
-            console.log(xhr.statusText);
-        });
-    });
 });
+
+// menue: show all //////////////////////////////////////////////////////////
+function showAll() {
+    $.getJSON('../php/crud.php', { action: "getall" },function (data) {
+        var table = '<table class="table table-bordered table-hover">';
+        table+='<tr><th>Clubname</th><th>Street</th><th>Streetnumber</th><th>Zip</th><th>E-Mail</th><th>Phonenumber</th></tr>';
+        $.each(data, function (clubname, item) {
+            table += '<tr><td>' + item.clubname + '</td><td>' + item.street + '</td><td>' + item.streetnumber + '</td>' +
+                '<td>' + item.zip + '</td><td>' + item.mail + '</td><td>' + item.phonenumber + '</td></tr>';
+        });
+        table += '</table>';
+        $("#content").html(table);
+        codeAddress(item.street);
+        $("#thanks").text("show all done...");
+    }).fail(function (xhr) {
+        $("#thanks").text("show all failure");
+        console.log(xhr.status);
+        console.log(xhr.response);
+        console.log(xhr.responseText);
+        console.log(xhr.statusText);
+    });
+}

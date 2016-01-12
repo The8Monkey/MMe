@@ -1,5 +1,5 @@
 <?php
-// CRUD Requests Controller for table 'user'
+// CRUD Requests Controller for table 'sportclub'
 error_reporting(E_ALL);
 //error_reporting(E_ALL ^E_NOTICE); // get rid of notices like 'undefined index'
 ini_set('display_errors', 1);
@@ -40,7 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $valid = false;
             }
             if (empty($_POST['zip'])) {
-                $streetError = 'Please enter zip';
+                $zipError = 'Please enter zip';
+                $valid = false;
+            }
+            if (strlen($_POST['zip'])!=5){
+                $zipError = 'Please enter valid zip (5 numbers)';
                 $valid = false;
             }
             if (empty($_POST['mail'])) {
@@ -69,14 +73,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $s->bindParam(':phonenumber', $_POST['phonenumber']);
                     $s->execute();
                     $response = array('message' => 'insert done');
+                    $message = 'insert done';
+                    $response = array('message' => $message);
                 } catch (PDOException $e) {
                     $error = 'Error adding sportclub: ' . $e->getMessage();
                     $response = array('databaseError' => $error);
                     $json = json_encode($response); // return json
                     echo $json;
+                    break;
                 }
-                $message = 'insert done';
-                $response = array('message' => $message);
             } else { // input error:
                 $response = array('clubnameError' => $clubnameError,
                 'streetError' => $streetError,
@@ -89,7 +94,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             break;
         case 'update': // UPDATE ***************************************************************
             $response = null;
-            $password = '';
             if (empty($_POST['clubname'])) {
                 $response = array('message' => 'No item selected - update impossible!');
             } else {
@@ -107,9 +111,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $s->bindValue(':street', $_POST['street']);
                     $s->bindValue(':streetnumber', $_POST['streetnumber']);
                     $s->bindValue(':zip', $_POST['zip']);
-                    $s->bindValue(':mail', $_POST['maill']);
+                    $s->bindValue(':mail', $_POST['mail']);
                     $s->bindValue(':phonenumber', $_POST['phonenumber']);
                     $s->execute();
+                    $response = array('message' => 'update done');
                 } catch (PDOException $e) {
                     $error = 'Error updating sportclub: ' . $e->getMessage();
                     $response = array('databaseError' => $error);
@@ -117,7 +122,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     echo $json;
                     exit();
                 }
-                $response = array('message' => 'update done');
             }
             $json = json_encode($response); // return json
             echo $json;
@@ -175,7 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $response = null;
             try {
                 // prevent sql injection by using a prepared statement:
-                $s = $pdo->prepare('SELECT clubname, street, streetnumber, zip, mail, phonenumber FROM clubname WHERE
+                $s = $pdo->prepare('SELECT clubname, street, streetnumber, zip, mail, phonenumber FROM sportclub WHERE
                 clubname = :clubname');
                 $s->bindValue(':clubname', $_GET['clubname']);
                 $s->execute();

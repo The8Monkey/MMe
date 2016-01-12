@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../css/addEdite.css"/>
     <script language="javascript" type="text/javascript" src="../javascript/formular.js"></script>
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <header>

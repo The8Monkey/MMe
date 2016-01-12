@@ -11,7 +11,7 @@ if (isset($_GET['add']))
     $street = '';
     $streetnumber = '';
     $zip = '';
-    $mail = '';
+    $maill = '';
     $phonenumber = '';
     $lng = '';
     $lat = '';
@@ -29,15 +29,19 @@ if (isset($_GET['add']))
             street = :street,
             streetnumber = :streetnumber,
             zip = :zip,
-            mail = :mail,
-            phonenumber = :phonenumber';
+            maill = :maill,
+            phonenumber = :phonenumber,
+            lng = :lng;
+            lat = :lat';
             $s = $pdo->prepare($sql);
             $s->bindParam(':clubname', $_POST['clubname']);
             $s->bindParam(':street', $_POST['street']);
             $s->bindParam(':streetnumber', $_POST['streetnumber']);
             $s->bindParam(':zip', $_POST['zip']);
-            $s->bindParam(':mail', $_POST['mail']);
+            $s->bindParam(':maill', $_POST['maill']);
             $s->bindParam(':phonenumber', $_POST['phonenumber']);
+            $s->bindParam(':lng',$lng=123);
+            $s->bindParam(':lat',$lat=123);
             $s->execute();
         }
         catch (PDOException $e)
@@ -56,7 +60,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'Edit')
     try
     {
         $sql =
-            'SELECT clubname, street, streetnumber,zip, mail, phonenumber
+            'SELECT clubname, street, streetnumber,zip, maill, phonenumber
               FROM sportclub WHERE clubname = :clubname';
         $s = $pdo->prepare($sql);
         $s->bindParam(':clubname' , $_POST['clubname']);
@@ -91,7 +95,7 @@ if (isset($_GET['editform']))
           street = :street,
           streetnumber = :streetnumber,
           zip = :zip,
-          mail = :mail,
+          maill = :maill,
           phonenumber = :phonenumber
           WHERE clubname = :clubname';
         $s = $pdo->prepare($sql);
@@ -99,7 +103,7 @@ if (isset($_GET['editform']))
         $s->bindValue(':street', $_POST['street']);
         $s->bindValue(':streetnumber', $_POST['streetnumber']);
         $s->bindValue(':zip', $_POST['zip']);
-        $s->bindValue(':mail', $_POST['maill']);
+        $s->bindValue(':maill', $_POST['maill']);
         $s->bindValue(':phonenumber', $_POST['phonenumber']);
         $s->execute();
     }
@@ -147,7 +151,7 @@ foreach ($result as $row) {
         'street' => $row['street'],
         'streetnumber' => $row['streetnumber'],
         'zip' => $row['zip'],
-        'mail' => $row['mail'],
+        'maill' => $row['maill'],
         'phonenumber' => $row['phonenumber']);
 }
 include 'list_inc.php';

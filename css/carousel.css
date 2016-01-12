@@ -92,6 +92,10 @@ table{
   margin-bottom: 60px;
 }
 
+.container{
+  margin-left: 0px;
+}
+
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
