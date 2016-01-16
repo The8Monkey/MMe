@@ -9,7 +9,7 @@ function initialize() {
 
     };
     map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-    /*
+
      new google.maps.Marker({
      map: map,
      position: {lat: 52.5502158, lng: 13.3501616},
@@ -21,7 +21,7 @@ function initialize() {
      position: {lat: 52.5167455, lng: 13.3228049},
      title: 'Judoclub Berlin'
      });
-     */
+
 }
 
 function codeAddress() {
