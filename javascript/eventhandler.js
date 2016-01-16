@@ -32,34 +32,42 @@ $(function () {
                 phonenumber: $("#phonenumber_in").val()
             },
             success: function (msg) {
+                $("#footerfeedback").text("");
+                $("#done").text("");
                 var obj = $.parseJSON(msg);
                 if(obj.message){
-                    $("#footerfeedback").text(obj.message);
+                    $("#done").text(obj.message);
                 } else {
                     var outstr='';
                     if(obj.clubnameError){
+                        outstr += '<p>';
                         outstr += obj.clubnameError;
-                        outstr += ' / ';
+                        outstr += '</p>';
                     }
                     if(obj.streetError){
+                        outstr += '<p>';
                         outstr += obj.streetError;
-                        outstr += ' / ';
+                        outstr += '</p>';
                     }
                     if(obj.streetnumberError){
+                        outstr += '<p>';
                         outstr += obj.streetnumberError;
-                        outstr += ' / ';
+                        outstr += '</p>';
                     }
                     if(obj.zipError){
+                        outstr += '<p>';
                         outstr += obj.zipError;
-                        outstr += ' / ';
+                        outstr += '</p>';
                     }
-                    if(obj.mailError){
-                        outstr += obj.mailError;
+                    if(obj.emailError){
+                        outstr += '<p>';
+                        outstr += obj.emailError;
+                        outstr += '</p>';
                     }
-                    if(!obj.clubnameError && !obj.streetError && !obj.streetnumberError && !obj.zipError && !obj.mailError){
+                    if(!obj.clubnameError && !obj.streetError && !obj.streetnumberError && !obj.zipError && !obj.emailError){
                         outstr = "cannot insert multible clubs with the same name!";
                     }
-                    $("#footerfeedback").text(outstr);
+                    $("#footerfeedback").html(outstr);
                 }
             }
         });
@@ -78,14 +86,14 @@ $(function () {
                 phonenumber: $("#phonenumber_in").val()
             },
             success: function (msg) {
+                $("#footerfeedback").text("");
+                $("#done").text("");
                 //alert(msg);
                 var obj = $.parseJSON(msg);
                 if(obj.message){
-                    $("#footerfeedback").text(obj.message); // -> main view
-                    $("#db_operations_modal").find("#footerfeedback").text(obj.message); // -> dialogue
+                    $("#done").text(obj.message); // -> main view
                 } else {
                     $("#footerfeedback").text(obj.databaseError);
-                    $("#db_operations_modal").find("#footerfeedback").text(obj.message);
                 }
             }
         });
@@ -99,9 +107,11 @@ $(function () {
                 clubname: $("#clubname_in").val()
             },
             success: function (msg) {
+                $("#footerfeedback").text("");
+                $("#done").text("");
                 var obj = $.parseJSON(msg);
                 if(obj.message){
-                    $("#footerfeedback").text(obj.message);
+                    $("#done").text(obj.message);
                 } else {
                     $("#footerfeedback").text(obj.databaseError);
                 }
@@ -110,6 +120,8 @@ $(function () {
     });
     //RESET
     $("#reset").click(function () {
+        $("#footerfeedback").text("");
+        $("#done").text("");
         $("#clubname_in").val("");
         $("#street_in").val("");
         $("#streetnumber_in").val("");
@@ -125,6 +137,8 @@ $(function () {
             data: { action: "find", clubname: $("#clubname_in").val() },
             dataType: "text",
             success: function (msg) {
+                $("#footerfeedback").text("");
+                $("#done").text("");
                 var obj = $.parseJSON(msg);
                 if(obj.databaseError){
                     $("#footerfeedback").text(obj.databaseError);
@@ -135,7 +149,7 @@ $(function () {
                     $("#zip_in").val(obj.zip);
                     $("#mail_in").val(obj.mail);
                     $("#phonenumber_in").val(obj.phonenumber);
-                    $("#footerfeedback").text(obj.message);
+                    $("#done").text(obj.message);
                 }
             }
         })

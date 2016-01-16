@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $phonenumber = '';
             // validate form input:
             if (empty($_POST['clubname'])) {
-                $clubenameError = 'Please enter club name';
+                $clubnameError = 'Please enter club name';
                 $valid = false;
             }
             if (empty($_POST['street'])) {
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         case 'update': // UPDATE ***************************************************************
             $response = null;
             if (empty($_POST['clubname'])) {
-                $response = array('message' => 'No item selected - update impossible!');
+                $response = array('databaseError' => 'No item selected - update impossible!');
             } else {
                 try {
                     $sql = 'UPDATE sportclub SET
@@ -128,21 +128,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             break;
         case 'delete': // DELETE *************************************************************
             $response = null;
-            try {
-                $sql = 'DELETE FROM sportclub WHERE clubname = :clubname';
-                $s = $pdo->prepare($sql);
-                $s->bindValue(':clubname', $_POST['clubname']);
-                $s->execute();
-                $response = array('message' => 'delete done');
-            } catch (PDOException $e) {
-                $error = 'Error deleting clubname: ' . $e->getMessage();
-                $response = array('databaseError' => $error);
-                $json = json_encode($response); // return json
-                echo $json;
-                exit();
+            if (empty($_POST['clubname'])) {
+                $response = array('databaseError' => 'No item selected - update impossible!');
+            } else {
+                try {
+                    $sql = 'DELETE FROM sportclub WHERE clubname = :clubname';
+                    $s = $pdo->prepare($sql);
+                    $s->bindValue(':clubname', $_POST['clubname']);
+                    $s->execute();
+                    $response = array('message' => 'delete done');
+                } catch (PDOException $e) {
+                    $error = 'Error deleting clubname: ' . $e->getMessage();
+                    $response = array('databaseError' => $error);
+                    $json = json_encode($response); // return json
+                    echo $json;
+                    exit();
+                }
             }
-            $message = 'record deleted';
-            $response = array('message' => $message);
             $json = json_encode($response); // return json
             echo $json;
             break;

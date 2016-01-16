@@ -1,19 +1,3 @@
-function checkURL(failId){
-    var element = document.getElementById("url");
-    var url = element.value;
-    var text;
-    var regex = /\.(jpeg|jpg|gif|png)$/;
-    if(regex.test(url)){
-        element.style.backgroundColor = "#2ecc71";
-        text = "";
-    } else {
-        text = "your image URL is invalid <br /> (only .jpeg .jpg .gif or .png files)";
-        element.style.backgroundColor = "#f39c12";
-    }
-    console.log(text);
-    document.getElementById(failId).innerHTML = text;
-}
-
 function checkString(id, failId){
     var element = document.getElementById(id);
     var string = element.value;
