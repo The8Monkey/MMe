@@ -140,7 +140,29 @@ $(function () {
             }
         })
     });
-    $("#showall").click(showAll());
+    $("#showall").click(function() {
+            $.getJSON('../php/crud.php', {action: "getall"}, function (data) {
+                var table = '<table class="table table-bordered table-hover table-responsive">';
+                table += '<tr><th>Clubname</th><th>Adress</th><th>Zip</th><th>E-Mail</th><th>Phonenumber</th></tr>';
+                $.each(data, function (clubname, item) {
+                    if (item.phonenumber == 0) {
+                        item.phonenumber = "no number given";
+                    }
+                    table += '<tr><td>' + item.clubname + '</td><td id="address">' + item.street + " " + item.streetnumber + '</td>' +
+                        '<td>' + item.zip + '</td><td>' + item.mail + '</td><td>' + item.phonenumber + '</td></tr>';
+                });
+                table += '</table>';
+                $("#content").html(table);
+                $("#thanks").text("");
+            }).fail(function (xhr) {
+                $("#thanks").text("show all failure");
+                console.log(xhr.status);
+                console.log(xhr.response);
+                console.log(xhr.responseText);
+                console.log(xhr.statusText);
+            })
+        }
+    );
     $("#findintable").click(function () {
         $.ajax({
             type: "GET",
@@ -148,17 +170,23 @@ $(function () {
             data: { action: "find", clubname: $("#input").val() },
             dataType: "text",
             success: function(msg) {
-                var item = $.parseJSON(msg)
+                var item = $.parseJSON(msg);
                 var table = '<table class="table table-bordered table-hover table-responsive">';
                 table += '<tr><th>Clubname</th><th>Adress</th><th>Zip</th><th>E-Mail</th><th>Phonenumber</th></tr>';
                 $(function () {
-                    table += '<tr><td>' + item.clubname + '</td><td>' + item.street + " " + item.streetnumber + '</td>' +
+                    if(item.phonenumber == 0){
+                        item.phonenumber = "No phonenumber given.";
+                    }
+                    table += '<tr><td>' + item.clubname + '</td><td id="address">' + item.street + " " + item.streetnumber + '</td>' +
                         '<td>' + item.zip + '</td><td>' + item.mail + '</td><td>' + item.phonenumber + '</td></tr>';
                 });
                 table += '</table>';
                 $("#content").html(table);
-                codeAddress(item.street + " " + item.streetnumber);
-                $("#thanks").text("show all done...");
+                $("#thanks").text("");
+                if (item.databaseError){
+                    $("#content").html("");
+                    $("#thanks").text(item.databaseError);
+                }
             }
         })
     });
@@ -170,13 +198,14 @@ function showAll() {
         var table = '<table class="table table-bordered table-hover table-responsive">';
         table+='<tr><th>Clubname</th><th>Adress</th><th>Zip</th><th>E-Mail</th><th>Phonenumber</th></tr>';
         $.each(data, function (clubname, item) {
-            table += '<tr><td>' + item.clubname + '</td><td>' + item.street + " " + item.streetnumber + '</td>' +
+            if(item.phonenumber==0){
+                item.phonenumber = "no number given";
+            }
+            table += '<tr><td>' + item.clubname + '</td><td id="address">' + item.street + " " + item.streetnumber + '</td>' +
                 '<td>' + item.zip + '</td><td>' + item.mail + '</td><td>' + item.phonenumber + '</td></tr>';
         });
         table += '</table>';
         $("#content").html(table);
-        codeAddress(item.street + " " + item.streetnumber);
-        $("#thanks").text("show all done...");
     }).fail(function (xhr) {
         $("#thanks").text("show all failure");
         console.log(xhr.status);

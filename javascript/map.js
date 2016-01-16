@@ -23,28 +23,33 @@ function initialize() {
      });
      */
 }
-function codeAddress(adresse) {
-    var address = adresse;
-    geocoder.geocode({'address': address}, function (results, status) {
+
+function codeAddress() {
+    var address = document.getElementById("address" + "zip").value;
+    initialize();
+    geocoder.geocode({'address': address}, function (results) {
+        new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location,
+            title: address
+        });
+    });
+}
+
+function codeAddress(event) {
+    event.preventDefault();
+    var address = document.getElementById("address").value;
+    initialize();
+    geocoder.geocode( { 'address': address}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             map.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
                 map: map,
                 position: results[0].geometry.location
             });
-        } else {
-            alert("Geocode was not successful for the following reason: " + status);
-        }
-    });
-}
-function codeAddressZip(zipCode) {
-    geocoder.geocode( { 'address': zipCode}, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-            //Got result, center the map and put it out there
-            map.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
+
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
             });
         } else {
             alert("Geocode was not successful for the following reason: " + status);

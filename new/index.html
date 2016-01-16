@@ -16,9 +16,12 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <!--googlemap js-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../javascript/bootstrap.min.js"></script>
+    <script src="../javascript/eventhandler.js"></script>
     <script src="../javascript/map.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js"></script>
-    <![endif]-->
+    <!--[endif]-->
 </head>
 <body onload="showAll()">
 <!-- DataBase Operations (INSERT, FIND, UPDDATE, DELETE) DIALOGUE -->
@@ -85,8 +88,6 @@
                             class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="#db_operations_modal" data-toggle="modal">Database Operations</a></li>
-                        <li class="divider"></li>
-                        <li><a id="show_all" href="#">Show all</a></li>
                     </ul>
                 </li>
             </ul>
@@ -118,14 +119,12 @@
 
 <div class="container">
     <div id="content"></div>
+    <h2><span id="thanks" class="label label-danger center-block"></span></h2>
 </div>
 <footer>
     <p>&copy; Sebastian Nieling, Christoph Stumpe</p>
 </footer>
 <!-- /container -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="../javascript/bootstrap.min.js"></script>
-<script src="../javascript/eventhandler.js"></script>
 </body>
 </html>
