@@ -76,24 +76,27 @@ table {
   margin-bottom: 20px;
 }
 */
+
+#tableA{
+  width: 95%;
+  margin: auto;
+}
+
 table{
   background-color: #edffcf;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
-#container{
-  margin-left: 5%;
-  width: 90%;
+.container{
+  margin: auto;
+  width: 100%;
 }
 /* Carousel base class */
 .carousel {
   margin-top: 40px;
   height: 500px;
   margin-bottom: 60px;
-}
-
-.container{
-  margin-left: 0px;
 }
 
 /* Since positioning the image, we need to help out the caption */

@@ -140,20 +140,42 @@ $(function () {
             }
         })
     });
+    $("#showall").click(showAll());
+    $("#findintable").click(function () {
+        $.ajax({
+            type: "GET",
+            url:"../php/crud.php",
+            data: { action: "find", clubname: $("#input").val() },
+            dataType: "text",
+            success: function(msg) {
+                var item = $.parseJSON(msg)
+                var table = '<table class="table table-bordered table-hover table-responsive">';
+                table += '<tr><th>Clubname</th><th>Adress</th><th>Zip</th><th>E-Mail</th><th>Phonenumber</th></tr>';
+                $(function () {
+                    table += '<tr><td>' + item.clubname + '</td><td>' + item.street + " " + item.streetnumber + '</td>' +
+                        '<td>' + item.zip + '</td><td>' + item.mail + '</td><td>' + item.phonenumber + '</td></tr>';
+                });
+                table += '</table>';
+                $("#content").html(table);
+                codeAddress(item.street + " " + item.streetnumber);
+                $("#thanks").text("show all done...");
+            }
+        })
+    });
 });
 
 // menue: show all //////////////////////////////////////////////////////////
 function showAll() {
     $.getJSON('../php/crud.php', { action: "getall" },function (data) {
-        var table = '<table class="table table-bordered table-hover">';
-        table+='<tr><th>Clubname</th><th>Street</th><th>Streetnumber</th><th>Zip</th><th>E-Mail</th><th>Phonenumber</th></tr>';
+        var table = '<table class="table table-bordered table-hover table-responsive">';
+        table+='<tr><th>Clubname</th><th>Adress</th><th>Zip</th><th>E-Mail</th><th>Phonenumber</th></tr>';
         $.each(data, function (clubname, item) {
-            table += '<tr><td>' + item.clubname + '</td><td>' + item.street + '</td><td>' + item.streetnumber + '</td>' +
+            table += '<tr><td>' + item.clubname + '</td><td>' + item.street + " " + item.streetnumber + '</td>' +
                 '<td>' + item.zip + '</td><td>' + item.mail + '</td><td>' + item.phonenumber + '</td></tr>';
         });
         table += '</table>';
         $("#content").html(table);
-        codeAddress(item.street);
+        codeAddress(item.street + " " + item.streetnumber);
         $("#thanks").text("show all done...");
     }).fail(function (xhr) {
         $("#thanks").text("show all failure");
