@@ -5,9 +5,10 @@
 body {
   padding-bottom: 40px;
   color: #5a5a5a;
-  background: url("../pics/background.png") no-repeat right bottom;
+  background: url("../pics/background.png");
   font-family: Helvetica, sans-serif !important;
   position: relative;
+  height: 100%;
 }
 
 footer{
@@ -19,7 +20,7 @@ footer{
   padding-top:8px;
   bottom: 0;
   width: 100%;
-  position: absolute;
+  position: fixed;
 }
 
 /* CUSTOMIZE THE NAVBAR

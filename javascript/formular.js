@@ -43,7 +43,7 @@ function checkPLZ(failId) {
         element.style.backgroundColor = "#f39c12";
     } else {
         element.style.backgroundColor = "#f39c12";
-        text = "your PLZ is not valid";
+        text = "";
     }
     console.log(text);
     document.getElementById(failId).innerHTML = text;

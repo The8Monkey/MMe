@@ -60,7 +60,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'Edit')
     try
     {
         $sql =
-            'SELECT clubname, street, streetnumber,zip, maill, phonenumber
+            'SELECT clubname, street, streetnumber,zip, mail, phonenumber
               FROM sportclub WHERE clubname = :clubname';
         $s = $pdo->prepare($sql);
         $s->bindParam(':clubname' , $_POST['clubname']);
@@ -95,7 +95,7 @@ if (isset($_GET['editform']))
           street = :street,
           streetnumber = :streetnumber,
           zip = :zip,
-          maill = :maill,
+          mail = :maill,
           phonenumber = :phonenumber
           WHERE clubname = :clubname';
         $s = $pdo->prepare($sql);
